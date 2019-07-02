@@ -1,0 +1,40 @@
+---
+- debug:
+    msg: '{"eula_accepted" : "true",
+    "company_name": "{{tower_license_company_name}}",
+    "contact_email": "{{tower_license_email}}",
+    "contact_name": "{{tower_license_contact_name}}",
+    "hostname": "{{tower_license_hostname}}",
+    "instance_count": {{tower_license_instance_count}},
+    "license_date": {{tower_license_date}},
+    "license_key": "{{tower_license_license_key}}",
+    "license_type": "{{tower_license_license_type}}",
+    "subscription_name": "{{tower_license_subscription_name}}"
+    }'
+
+#- meta: end_play
+
+- name: Upload license file
+  uri:
+    url: https://localhost/api/v1/config/
+    validate_certs: no
+    method: POST
+    force_basic_auth: yes
+    user: admin
+    password: "{{admin_password}}" 
+    remote_src: yes
+    body: '{"eula_accepted" : "true",
+    "company_name": "{{tower_license_company_name}}",
+    "contact_email": "{{tower_license_email}}",
+    "contact_name": "{{tower_license_contact_name}}",
+    "hostname": "{{tower_license_hostname}}",
+    "instance_count": {{tower_license_instance_count}},
+    "license_date": {{tower_license_date}},
+    "license_key": "{{tower_license_license_key}}",
+    "license_type": "{{tower_license_license_type}}",
+    "subscription_name": "{{tower_license_subscription_name}}"
+    }'
+    body_format: json
+    headers:
+      Content-Type: "application/json"
+

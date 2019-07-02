@@ -1,0 +1,44 @@
+---
+
+- name: Download latest version of ansble tower
+  get_url:
+    url: "{{ webserver }}/{{ tower_download_file }}"
+    dest: "{{ working_location }}{{ tower_download_file }}"
+    mode: 0740
+
+- name: Untar the tower install
+  unarchive: 
+    src: "{{ working_location }}{{ tower_download_file }}"
+    dest: "{{ working_location }}"
+    remote_src: yes
+
+- name: update admin password in inventory
+  lineinfile:
+    path: "{{ working_location }}{{ tower_extracted_dir }}/inventory"
+    regexp: "admin_password=''"
+    line: "admin_password='{{admin_password}}'"
+    state: present
+
+- name: update postgresql password in inventory
+  lineinfile:
+    path: "{{ working_location }}{{ tower_extracted_dir }}/inventory"
+    regexp: "pg_password=''"
+    line: "pg_password='{{pg_password}}'"
+    state: present
+
+- name: update rabbitmq password in inventory
+  lineinfile:
+    path: "{{ working_location }}{{ tower_extracted_dir }}/inventory"
+    regexp: "rabbitmq_password=''"
+    line: "rabbitmq_password='{{rabbitmq_password}}'"
+    state: present
+
+- name: Install Tower 
+  shell: | 
+         export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:"{{working_location}}{{tower_extracted_dir}}"
+         cd {{ working_location }}{{ tower_extracted_dir }}/
+         bash ./setup.sh 
+
+- pause:
+    minutes: 2
+

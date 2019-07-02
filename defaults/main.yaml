@@ -1,0 +1,13 @@
+---
+# Working location for installation files
+working_location: "/root/"
+
+# Ansible Group name for tower systems
+platform_group_name: "tower"
+
+# Default Password used for tower deployment
+admin_password: "password"
+pg_password: "password"
+rabbitmq_password: "password"
+
+

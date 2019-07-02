@@ -1,0 +1,8 @@
+---
+
+- name: include vars
+  include_vars: "{{ playbook_dir }}/config.yaml"
+
+- include: ansible_tower_install.yaml
+- include: ansible_tower_license_install.yaml
+
