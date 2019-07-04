@@ -1,0 +1,13 @@
+{
+    "eula_accepted" : "true",
+    "company_name": "Your Company",
+    "contact_email": "user@example.com",
+    "contact_name": "You",
+    "hostname": "random_uuid",
+    "instance_count": 50,
+    "license_date": 1570119596,
+    "license_key": "random_string",
+    "license_type": "enterprise",
+    "subscription_name": "Ansible Tower by Red Hat (50 Managed Nodes)",
+    "trial": true
+}
