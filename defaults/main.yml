@@ -1,0 +1,16 @@
+---
+# Working location for installation files
+towerinstall_working_location: "/root/"
+
+# Ansible Group name for tower systems
+towerinstall_platform_group_name: "tower"
+
+# Default Password used for tower deployment
+towerinstall_admin_password: "password"
+towerinstall_pg_password: "password"
+towerinstall_rabbitmq_password: "password"
+
+# Tower Installer
+towerinstall_tower_release_version: 3.5.0-1
+towerinstall_tower_releases_url: https://releases.ansible.com/ansible-tower/setup/
+towerinstall_tower_setup_file: ansible-tower-setup-{{ towerinstall_tower_release_version }}.tar.gz
